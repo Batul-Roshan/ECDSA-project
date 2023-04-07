@@ -1,13 +1,11 @@
-## ECDSA Node
+ECDSA-Node
+This project allows clients to transfer funds between accounts by using the correct private key and digital signature for verification. The digital signature serves as a way for the server to confirm the transaction and transfer funds between accounts.
 
-This project is an example of using a client and server to facilitate transfers between different addresses. Since there is just a single server on the back-end handling transfers, this is clearly very centralized. We won't worry about distributed consensus for this project.
+Client-side functionality
+The user inputs their private key, which is converted to the appropriate address. This address is then sent to the server to fetch the client's name and wallet balance. In addition to the recipient's address, the client needs to input a valid signature, recovery bit, and transaction amount in order to make a transfer.
 
-However, something that we would like to incoporate is Public Key Cryptography. By using Elliptic Curve Digital Signatures we can make it so the server only allows transfers that have been signed for by the person who owns the associated address.
-
-### Video instructions
-For an overview of this project as well as getting started instructions, check out the following video:
-
-https://www.loom.com/share/0d3c74890b8e44a5918c4cacb3f646c4
+Server-side functionality
+The server receives the sender's signature, recovery bit, and transaction amount. It uses this information to recover the sender's public key and corresponding address. The server then validates if the recovered address matches that of the sender. If the validation is successful, the transaction is completed and the balances in both the sender and recipient wallets are updated. If the validation fails, the sender is not allowed to make the transaction.
  
 ### Client
 
